@@ -19,7 +19,7 @@
 - delete lottery ticket
 
   - /t/:ticketId `DELETE` `delete single ticket by id`
-  - /u/:ticketId `DELETE` `delete single or multiple ticket by username`
+  - /u/:username `DELETE` `delete single or multiple ticket by username`
 
 - raffle draw
   - /draw?winnerCount=3 `GET` `get random few winners from tickets`
