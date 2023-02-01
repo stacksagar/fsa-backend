@@ -24,7 +24,7 @@ class MyDB {
 
   // find all tickets
   find() {
-    return this.ticket;
+    return this.tickets;
   }
 
   // find single ticket
@@ -78,21 +78,19 @@ class MyDB {
   }
 
   // Find Winner Raffle Draw
-  draw(winners_count) {
-    const index_of_winners = new Array(winners_count);
+  draw(winnerCount) {
+    const winnersIndexes = [];
 
-    for (let i = 0; i < index_of_winners.length; i++) {
-      let random_index = Math.floor(Math.random() * this.tickets.length);
-      while (index_of_winners.indexOf(random_index) > -1) {
-        random_index = Math.floor(Math.random() * this.tickets.length);
+    while (winnersIndexes.length < winnerCount) {
+      let newWinner = Math.floor(Math.random() * this.tickets.length);
+      if (winnersIndexes.includes(newWinner)) {
+        continue;
       }
-      index_of_winners.push(random_index);
+      winnersIndexes.push(newWinner);
     }
 
-    return index_of_winners.map((index) => this.tickets[index]);
+    return winnersIndexes.map((index) => this.tickets[index]);
   }
-
-  //
 }
 
 const myDB = new MyDB();
