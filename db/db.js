@@ -59,6 +59,22 @@ class MyDB {
     return ticket;
   }
 
+  // update by username
+  updateByUsername(username, new_username, price) {
+    const tickets = this.tickets.filter(
+      (ticket) => ticket?.username === username
+    );
+    for (let i = 0; i < tickets?.length; i++) {
+      if (new_username) {
+        tickets[i].username = new_username;
+      }
+      if (price) {
+        tickets[i].price = price;
+      }
+    }
+    return tickets;
+  }
+
   // delete by id
   deleteById(ticketID) {
     const index = this.tickets.findIndex(
@@ -77,8 +93,14 @@ class MyDB {
     }
   }
 
+  // delete by username
+  deleteByUsername(username) {
+    this.tickets = this.tickets.filter((t) => t.username !== username);
+    return true;
+  }
+
   // Find Winner Raffle Draw
-  draw(winnerCount) {
+  draw(winnerCount = 1) {
     const winnersIndexes = [];
 
     while (winnersIndexes.length < winnerCount) {

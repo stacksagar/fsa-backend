@@ -9,7 +9,7 @@
 
   - /all `GET` `all tickets`
   - /t/:ticketId `GET` `read single ticket by ticket ID`
-  - /u/:ticketId `GET` `read single or multiple ticket by username`
+  - /u/:username `GET` `read single or multiple ticket by username`
 
 - update ticket
 
